@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class DisplayScreen {
 
-    //method to display the main screen.
+    //Method to display the main screen.
     public void mainScreen(){
         System.out.println("=================================");
         System.out.println("        MONEYTRACK");
@@ -20,8 +20,29 @@ public class DisplayScreen {
         System.out.print("Please select an option: ");
     }
 
-    //gets the user choice
+    //Gets the user choice for the Main screen
     public String getUserChoice(Scanner scanner){
         return scanner.nextLine().trim().toUpperCase(); //returns user choice.
+    }
+
+    //Method to display the Ledger screen.
+    public void displayLedger() {
+        System.out.println("=================================");
+        System.out.println("          MONEYTRACK");
+        System.out.println("             LEDGER");
+        System.out.println("=================================");
+        System.out.println();
+        System.out.println("A) All Transactions");
+        System.out.println("D) Deposits");
+        System.out.println("P) Payments");
+        System.out.println("R) Reports");
+        System.out.println("H) Home");
+        System.out.println();
+        System.out.print("Please select an option: ");
+    }
+
+    //Gets the user choice of the Ledger screen.
+    public String getLedgerChoice(Scanner scanner) {
+        return scanner.nextLine().trim().toUpperCase();
     }
 }
