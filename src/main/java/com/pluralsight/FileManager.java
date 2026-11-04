@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,7 +23,7 @@ public class FileManager {
         //Catch any errors that happen while accessing or reading the file.
         try {
             if (!Files.exists(filePath)) {
-                Files.createDirectories(filePath.getParent());
+                Files.createDirectories(filePath.getParent()); //used to safely create all non-existent parent directories for a given file path before you attempt to create or write to the file itself.
                 Files.createFile(filePath);
                 return transactions;
             }
@@ -47,7 +48,8 @@ public class FileManager {
                     String vendor = parts[3];
                     double amount = Double.parseDouble(parts[4]);
 
-                    AccountingLedger transaction = new AccountingLedger(date, time, description, vendor, amount); //Creates new transaction object
+                    AccountingLedger transaction = new AccountingLedger(date, time,
+                            description, vendor, amount); //Creates new transaction object
 
                     transactions.add(transaction);
 
@@ -60,5 +62,34 @@ public class FileManager {
         }
 
         return transactions;
+    }
+
+    //Method to save a new transaction to the csv file.
+    public void saveTransactions(AccountingLedger transaction) {
+
+        try {
+            Files.createDirectories(filePath.getParent());
+
+            String line = String.format(
+                    Locale.US,
+                    "%s|%s|%s|%s|%.2f%n", //format for the string.
+                    transaction.getDate(),
+                    transaction.getTime(),
+                    transaction.getDescription().replace("|", "/"),
+                    transaction.getVendor().replace("|", "/"),
+                    transaction.getAmount()
+            );
+
+            //Write to the file.
+            Files.writeString(
+                    filePath,
+                    line,
+                    StandardOpenOption.CREATE,//Creates a new file if it does not exist.
+                    StandardOpenOption.APPEND //Appends the new transaction without deleting existing records
+            );
+
+        } catch (IOException e) {
+            System.out.println("Error saving transaction: " + e.getMessage());
+        }
     }
 }
