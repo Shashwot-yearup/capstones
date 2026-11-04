@@ -18,8 +18,8 @@ public class MoneyTrackApp {
             //Switch Statement to see which
             switch (choice) {
                 case "D" -> addDeposit(scanner);
-                //case -> "D" -> makePayment()
-                //case -> "D" -> displayLedger()
+                case"P" -> makePayment(scanner);
+                //case "L" -> displayLedger(scanner);
                 case "X" -> System.out.println("Thank you\n");
                 default -> System.out.println("Invalid option. Please try again");
             }
@@ -42,6 +42,23 @@ public class MoneyTrackApp {
         if (amount <= 0) {
             System.out.println("Amount must be grater then 0");
 
+        }
+    }
+    //Method to makePayment
+    public void makePayment (Scanner scanner){
+        System.out.println("\nMake Payment");
+
+        System.out.println("Enter description");
+        String description = scanner.nextLine();
+
+        System.out.println("Enter vendor");
+        String vendor = scanner.nextLine();
+
+        double amount = getAmount(scanner);
+
+        if(amount <= 0){
+            System.out.println("Amount must be greater then 0.");
+            return;
         }
     }
 
