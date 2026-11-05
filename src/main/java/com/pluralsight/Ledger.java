@@ -20,7 +20,7 @@ public class Ledger {
         displayTransactions(transactions);
     }
 
-    //Method to display only the deposits
+    //Method to display only the deposits(+)
     public  void displayDeposits(){
         ArrayList<AccountingLedger> deposits = new ArrayList<>();
 
@@ -32,6 +32,21 @@ public class Ledger {
         }
         System.out.println("System.out.println(\"\\n========== DEPOSITS ==========\");\n");
         displayTransactions(deposits);
+    }
+
+    //Method to display all the payments(-)
+    public  void displayPayment() {
+        ArrayList<AccountingLedger> payment = new ArrayList<>();
+
+        //for loop to go through the list and if statement to get the negative value only.
+        for (AccountingLedger transaction : transactions) {
+            if (transaction.getAmount() < 0) {
+                payment.add(transaction);
+            }
+        }
+
+        System.out.println("\n========== PAYMENTS ==========");
+        displayTransactions(payment);
     }
 
     //Method to do all sort and check if the list is empty.

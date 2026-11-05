@@ -52,12 +52,13 @@ public class MoneyTrackApp {
         while (!userChoice.equals("H")) {
             displayScreen.displayLedger();
 
-            //Switch statement to get the user choice for the ledger
             userChoice = displayScreen.getLedgerChoice(scanner);
+
+            //Switch statement to get the user choice for the ledger
             switch (userChoice) {
                 case "A" -> ledger.displayAllTransactions();
                 case "D" -> ledger.displayDeposits();
-                //case "P" -> displayLedgerMenu(scanner);
+                case "P" -> ledger.displayPayment();
                 //case "R" -> System.out.println("Thank you\n");
                 case "H" -> System.out.println("Returning to Home screen...");
                 default -> System.out.println("Invalid option. Please try again");
