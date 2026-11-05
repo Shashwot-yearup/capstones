@@ -16,7 +16,7 @@ public class DisplayScreen {
         System.out.println("L) Ledger");
         System.out.println("X) Exit");
         System.out.println();
-        System.out.print("Please select an option: ");
+        System.out.print("Please select an option: \n");
     }
 
     //Gets the user choice for the Main screen
@@ -63,4 +63,6 @@ public class DisplayScreen {
     public String getReportChoice(Scanner scanner) {
         return scanner.nextLine().trim().toUpperCase();
     }
+
+
 }

@@ -30,9 +30,9 @@ public class MoneyTrackApp {
         //While loop to keep running until the user hit x.
         while (!userChoice.equals("X")) {
 
-            displayScreen.mainScreen();
-
             ledger.displayAccountSummary();
+
+            displayScreen.mainScreen();
 
             userChoice = displayScreen.getUserChoice(scanner); //saves the user choice
 
@@ -86,7 +86,7 @@ public class MoneyTrackApp {
                 //case Y" -> ledger.displayPayment();
                 //case "L" -> displayReportMenu(scanner);
                 //case "V" -> displayReportMenu(scanner);
-                case "B" -> System.out.println("Returning to Home screen...");
+                case "B" -> System.out.println("Returning to ledger screen...");
                 default -> System.out.println("Invalid option. Please try again");
             }
         }

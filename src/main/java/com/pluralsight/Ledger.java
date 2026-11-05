@@ -174,7 +174,7 @@ public class Ledger {
         double total = 0;
 
         for (AccountingLedger transaction : transactions) {
-            if (transaction.getAmount() > 0) {
+            if (transaction.getAmount() < 0) {
                 total += Math.abs(transaction.getAmount());
             }
         }
@@ -189,11 +189,12 @@ public class Ledger {
 
     //Method to display account summary.
     public void displayAccountSummary(){
-        System.out.printf("Total Deposits: $%.2f%n", calculateDeposits());
+        System.out.println("\n===Account Summary===");
+        System.out.printf("\nTotal Deposits: $%.2f%n", calculateDeposits());
         System.out.printf("Total Payments: $%.2f%n", calculatePayments());
-        System.out.printf("Account Balance: $%.2f%n", calculateBalance());
+        System.out.printf("Account Balance: $%.2f%n%n", calculateBalance());
 
-        System.out.println("=====================================");
+        System.out.println("========================\n\n");
     }
 
 }
