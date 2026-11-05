@@ -81,7 +81,7 @@ public class FileManager {
                     transaction.getAmount()
             );
 
-            System.out.println("Saving transction: " + line);
+            System.out.println("Saving transaction: " + line);
 
             //Write to the file.
             Files.writeString(

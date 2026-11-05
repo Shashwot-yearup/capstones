@@ -97,6 +97,23 @@ public class MoneyTrackApp {
             System.out.println("Amount must be greater then 0.");
             return;
         }
+
+        LocalDateTime now = LocalDateTime.now();
+
+        //format for to save the answers to the csv file.
+        AccountingLedger transaction = new AccountingLedger(
+                now.toLocalDate().toString(),
+                now.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                description,
+                vendor,
+                -amount
+        );
+
+        transactions.add(transaction);
+
+        fileManager.saveTransaction((transaction));
+
+        System.out.println("Payment was success full!!");
     }
 
     //Method to check if the amount is a valid number or not
