@@ -20,24 +20,25 @@ public class MoneyTrackApp {
         fileManager = new FileManager();
         transactions = fileManager.loadTransactions();
         displayScreen = new DisplayScreen();
-        ledger = new Ledger(transactions);
+       // ledger = new Ledger(transactions);
     }
 
+    //Method to keep the program running.
     public void run(Scanner scanner) {
 
         String choice = "";
 
         //While loop to keep running until the user hit x.
         while (!choice.equals("X")) {
-            Screen.mainScreen();
+            displayScreen.mainScreen();
 
-            choice = Screen.getUserChoice(scanner); //saves the user choice
+            choice = displayScreen.getUserChoice(scanner); //saves the user choice
 
-            //Switch Statement to see which
+            //Switch Statement to see which option did the user choose.
             switch (choice) {
                 case "D" -> addDeposit(scanner);
-                case"P" -> makePayment(scanner);
-                case "L" -> displayLedger(scanner);
+                case "P" -> makePayment(scanner);
+                //case "L" -> displayLedger(scanner);
                 case "X" -> System.out.println("Thank you\n");
                 default -> System.out.println("Invalid option. Please try again");
             }
@@ -59,9 +60,27 @@ public class MoneyTrackApp {
 
         if (amount <= 0) {
             System.out.println("Amount must be grater then 0");
-
+            return;
         }
+
+        LocalDateTime now = LocalDateTime.now();
+
+        //format for to save the answers to the csv file.
+        AccountingLedger transaction = new AccountingLedger(
+                now.toLocalDate().toString(),
+                now.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                description,
+                vendor,
+                amount
+        );
+
+        transactions.add(transaction);
+
+        fileManager.saveTransaction((transaction));
+
+        System.out.println("Deposit success full!!");
     }
+
     //Method to makePayment
     public void makePayment (Scanner scanner){
         System.out.println("\nMake Payment");

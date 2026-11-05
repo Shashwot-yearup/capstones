@@ -38,6 +38,7 @@ public class FileManager {
 
                 if (parts.length != 5) {
                     System.out.println("Skipping invalid transaction: " + line);
+                    continue;
                 }
 
                 //Converts the transaction information for the csv file
@@ -65,7 +66,7 @@ public class FileManager {
     }
 
     //Method to save a new transaction to the csv file.
-    public void saveTransactions(AccountingLedger transaction) {
+    public void saveTransaction(AccountingLedger transaction) {
 
         try {
             Files.createDirectories(filePath.getParent());
@@ -79,6 +80,8 @@ public class FileManager {
                     transaction.getVendor().replace("|", "/"),
                     transaction.getAmount()
             );
+
+            System.out.println("Saving transction: " + line);
 
             //Write to the file.
             Files.writeString(
