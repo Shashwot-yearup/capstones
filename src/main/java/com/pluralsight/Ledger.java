@@ -20,6 +20,19 @@ public class Ledger {
         displayTransactions(transactions);
     }
 
+    //Method to display only the deposits
+    public  void displayDeposits(){
+        ArrayList<AccountingLedger> deposits = new ArrayList<>();
+
+        //for loop to go through the list and if statement to get the positive value only.
+        for(AccountingLedger transaction: transactions){
+            if (transaction.getAmount() > 0 ){
+                deposits.add(transaction);
+            }
+        }
+        System.out.println("System.out.println(\"\\n========== DEPOSITS ==========\");\n");
+        displayTransactions(deposits);
+    }
 
     //Method to do all sort and check if the list is empty.
     private void displayTransactions(ArrayList<AccountingLedger> list){

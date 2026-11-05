@@ -20,7 +20,7 @@ public class MoneyTrackApp {
         fileManager = new FileManager();
         transactions = fileManager.loadTransactions();
         displayScreen = new DisplayScreen();
-        //ledger = new Ledger(transactions);
+        ledger = new Ledger(transactions);
     }
 
     //Method to keep the program running.
@@ -34,7 +34,7 @@ public class MoneyTrackApp {
 
             choice = displayScreen.getUserChoice(scanner); //saves the user choice
 
-            //Switch Statement to see which option did the user choose.
+            //Switch Statement to get which option did the user choose.
             switch (choice) {
                 case "D" -> addDeposit(scanner);
                 case "P" -> makePayment(scanner);
@@ -52,10 +52,11 @@ public class MoneyTrackApp {
         while (!userChoice.equals("H")) {
             displayScreen.displayLedger();
 
+            //Switch statement to get the user choice for the ledger
             userChoice = displayScreen.getLedgerChoice(scanner);
             switch (userChoice) {
                 case "A" -> ledger.displayAllTransactions();
-                //case "D" -> Ledger.
+                case "D" -> ledger.displayDeposits();
                 //case "P" -> displayLedgerMenu(scanner);
                 //case "R" -> System.out.println("Thank you\n");
                 case "H" -> System.out.println("Returning to Home screen...");
