@@ -29,7 +29,10 @@ public class MoneyTrackApp {
 
         //While loop to keep running until the user hit x.
         while (!userChoice.equals("X")) {
+
             displayScreen.mainScreen();
+
+            ledger.displayAccountSummary();
 
             userChoice = displayScreen.getUserChoice(scanner); //saves the user choice
 
