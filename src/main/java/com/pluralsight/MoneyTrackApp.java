@@ -1,9 +1,27 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class MoneyTrackApp {
-    DisplayScreen Screen = new DisplayScreen();
+
+    // Core components for managing data, user interface, and file I/O
+    private  ArrayList<AccountingLedger> transactions;
+    private  DisplayScreen displayScreen;
+    private  Ledger ledger;
+    private  FileManager fileManager;
+
+    //constructor
+    public MoneyTrackApp(){
+        fileManager = new FileManager();
+        transactions = fileManager.loadTransactions();
+        displayScreen = new DisplayScreen();
+        ledger = new Ledger(transactions);
+    }
 
     public void run(Scanner scanner) {
 
@@ -19,7 +37,7 @@ public class MoneyTrackApp {
             switch (choice) {
                 case "D" -> addDeposit(scanner);
                 case"P" -> makePayment(scanner);
-                //case "L" -> displayLedger(scanner);
+                case "L" -> displayLedger(scanner);
                 case "X" -> System.out.println("Thank you\n");
                 default -> System.out.println("Invalid option. Please try again");
             }
