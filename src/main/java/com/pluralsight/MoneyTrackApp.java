@@ -97,10 +97,39 @@ public class MoneyTrackApp {
                             previousMonth.withDayOfMonth((previousMonth.lengthOfMonth())));
                 }
 
-                //case Y" -> ledger.displayPayment();
-                //case "L" -> displayReportMenu(scanner);
-                //case "V" -> displayReportMenu(scanner);
+                //Year to date.
+                case "Y" -> ledger.displayDateRangeReport(
+                        "Year to date",
+                        today.withDayOfYear(1),
+                        today);
+
+                //Previous year.
+                case "L" -> {
+                    LocalDate previousYear = today.minusYears(1);
+
+                    ledger.displayDateRangeReport(
+                            "Previous Year",
+                            previousYear.withDayOfMonth(1),
+                            previousYear.withDayOfMonth((previousYear.lengthOfYear())));
+                }
+
+                //Search by vendor name.
+                case "V" -> {
+
+                    System.out.println("Enter the Vendor name you want to search");
+
+                    String vendorName = scanner.nextLine().trim();
+
+                    if (vendorName.isEmpty()){
+                    System.out.println("please enter a vendor name");
+                    }else {
+                    ledger.searchByVendor(vendorName);
+                    }
+                }
+
+                //Returns to the ledger Screen.
                 case "B" -> System.out.println("Returning to ledger screen...");
+
                 default -> System.out.println("Invalid option. Please try again");
             }
         }
