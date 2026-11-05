@@ -154,4 +154,31 @@ public class Ledger {
 
         System.out.println("====================================");
     }
+
+    //Method to calculate total deposits.
+    public double calculateDeposits() {
+        double total = 0;
+
+        for (AccountingLedger transaction : transactions) {
+            if (transaction.getAmount() > 0) {
+                total += transaction.getAmount();
+            }
+        }
+
+        return total;
+    }
+
+    //Method to calculate total payments.
+    public double calculatePayments() {
+        double total = 0;
+
+        for (AccountingLedger transaction : transactions) {
+            if (transaction.getAmount() > 0) {
+                total += Math.abs(transaction.getAmount());
+            }
+        }
+
+        return total;
+    }
+
 }
