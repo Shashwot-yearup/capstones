@@ -1,11 +1,9 @@
 package com.pluralsight;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 
 public class MoneyTrackApp {
 
@@ -66,93 +64,96 @@ public class MoneyTrackApp {
             }
         }
     }
-        //Method to add the deposit.
-        public void addDeposit (Scanner scanner){
 
-            System.out.println("\nAdd Deposit");
+    //Method to add the deposit.
+    public void addDeposit(Scanner scanner) {
 
-            System.out.println("Enter description");
-            String description = scanner.nextLine();
+        System.out.println("\nAdd Deposit");
 
-            System.out.println("Enter vendor");
-            String vendor = scanner.nextLine();
+        System.out.println("Enter description");
+        String description = scanner.nextLine();
 
-            double amount = getAmount(scanner);
+        System.out.println("Enter vendor");
+        String vendor = scanner.nextLine();
 
-            if (amount <= 0) {
-                System.out.println("Amount must be grater then 0");
-                return;
-            }
+        double amount = getAmount(scanner);
 
-            LocalDateTime now = LocalDateTime.now();
-
-            //format for to save the answers to the csv file.
-            AccountingLedger transaction = new AccountingLedger(
-                    now.toLocalDate().toString(),
-                    now.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
-                    description,
-                    vendor,
-                    amount
-            );
-
-            transactions.add(transaction);
-
-            fileManager.saveTransaction((transaction));
-
-            System.out.println("Deposit success full!!");
+        if (amount <= 0) {
+            System.out.println("Amount must be grater then 0");
+            return;
         }
 
-        //Method to makePayment
-        public void makePayment (Scanner scanner){
-            System.out.println("\nMake Payment");
+        LocalDateTime now = LocalDateTime.now();
 
-            System.out.println("Enter description");
-            String description = scanner.nextLine();
+        //format for to save the answers to the csv file.
+        AccountingLedger transaction = new AccountingLedger(
+                now.toLocalDate().toString(),
+                now.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                description,
+                vendor,
+                amount
+        );
 
-            System.out.println("Enter vendor");
-            String vendor = scanner.nextLine();
+        transactions.add(transaction);
 
-            double amount = getAmount(scanner);
+        fileManager.saveTransaction((transaction));
 
-            if (amount <= 0) {
-                System.out.println("Amount must be greater then 0.");
-                return;
-            }
+        System.out.println("Deposit success full!!");
+    }
 
-            LocalDateTime now = LocalDateTime.now();
+    //Method to makePayment
+    public void makePayment(Scanner scanner) {
+        System.out.println("\nMake Payment");
 
-            //format for to save the answers to the csv file.
-            AccountingLedger transaction = new AccountingLedger(
-                    now.toLocalDate().toString(),
-                    now.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
-                    description,
-                    vendor,
-                    -amount
-            );
+        System.out.println("Enter description");
+        String description = scanner.nextLine();
 
-            transactions.add(transaction);
+        System.out.println("Enter vendor");
+        String vendor = scanner.nextLine();
 
-            fileManager.saveTransaction((transaction));
+        double amount = getAmount(scanner);
 
-            System.out.println("Payment was success full!!");
+        if (amount <= 0) {
+            System.out.println("Amount must be greater then 0.");
+            return;
         }
 
-        //Method to check if the amount is a valid number or not
-        private double getAmount (Scanner scanner) {
-            while (true) {
-                System.out.println("Enter amount: ");
+        LocalDateTime now = LocalDateTime.now();
 
-                try {
-                    double amount = Double.parseDouble(scanner.nextLine());
+        //format for to save the answers to the csv file.
+        AccountingLedger transaction = new AccountingLedger(
+                now.toLocalDate().toString(),
+                now.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                description,
+                vendor,
+                -amount
+        );
 
-                    if (Double.isFinite(amount)) { //Checks if the number is valid or not.
-                        return amount;
-                    }
+        transactions.add(transaction);
 
-                    System.out.println("Please a valid amount:");
+        fileManager.saveTransaction((transaction));
 
-                } catch (NumberFormatException e) {
-                    System.out.println("Please enter a valid number.");
-                }        }
+        System.out.println("Payment was success full!!");
+    }
+
+    //Method to check if the amount is a valid number or not
+    private double getAmount(Scanner scanner) {
+        while (true) {
+            System.out.println("Enter amount: ");
+
+            try {
+                double amount = Double.parseDouble(scanner.nextLine());
+
+                if (Double.isFinite(amount)) { //Checks if the number is valid or not.
+                    return amount;
+                }
+
+                System.out.println("Please a valid amount:");
+
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+
+            }
+        }
     }
 }

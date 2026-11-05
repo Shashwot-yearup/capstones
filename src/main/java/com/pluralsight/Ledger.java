@@ -1,6 +1,5 @@
 package com.pluralsight;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -66,7 +65,6 @@ public class Ledger {
                         (AccountingLedger t) ->
                                 LocalDateTime.parse(t.getDate() + "T" + t.getTime())
                 ).reversed());
-
 
         System.out.println("--------------------------------------------------------------------------");
 
