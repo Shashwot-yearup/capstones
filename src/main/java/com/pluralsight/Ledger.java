@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -86,5 +87,25 @@ public class Ledger {
         }
 
         System.out.println("--------------------------------------------------------------------------");
+    }
+
+    //Method to display transactions between two dates.
+    public void displayDateRangeReport(String reportName, LocalDate startDate, LocalDate endDate){
+        ArrayList<AccountingLedger> reportTransactions = new ArrayList<>();
+
+        //
+        for (AccountingLedger transaction : transactions) {
+            LocalDate transactionDate = LocalDate.parse(transaction.getDate());
+
+            if (!transactionDate.isBefore(startDate) && !transactionDate.isAfter(endDate)){
+                reportTransactions.add(transaction);
+            }
+
+            System.out.println("\n========== " + reportName + " ==========");
+            System.out.println("From: " + startDate);
+            System.out.println("To:   " + endDate);
+
+            displayTransactions(reportTransactions);
+        }
     }
 }

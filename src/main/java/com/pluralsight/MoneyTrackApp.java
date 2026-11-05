@@ -1,7 +1,5 @@
 package com.pluralsight;
 
-import com.sun.source.tree.WhileLoopTree;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -78,20 +76,18 @@ public class MoneyTrackApp {
             userChoiceReport = displayScreen.getReportChoice(scanner);
 
             //LocalDate today = localDate.now();
+
             switch (userChoiceReport){
-                //case "A" -> ledger.displayAllTransactions();
-                //case "D" -> ledger.displayDeposits();
-                //case "P" -> ledger.displayPayment();
-                //case "R" -> displayReportMenu(scanner);
+                case "M" -> ledger.displayDateRangeReport();
+                //case "P" -> ledger.displayDeposits();
+                //case Y" -> ledger.displayPayment();
+                //case "L" -> displayReportMenu(scanner);
+                //case "V" -> displayReportMenu(scanner);
                 case "B" -> System.out.println("Returning to Home screen...");
                 default -> System.out.println("Invalid option. Please try again");
             }
-
-
-
         }
     }
-
 
     //Method to add the deposit.
     public void addDeposit(Scanner scanner) {
