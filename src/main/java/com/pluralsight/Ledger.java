@@ -10,7 +10,7 @@ public class Ledger {
     private ArrayList<AccountingLedger> transactions;
 
     //loads the transactions
-    public Ledger(ArrayList<AccountingLedger> transactions){
+    public Ledger(ArrayList<AccountingLedger> transactions) {
         this.transactions = transactions;
     }
 
@@ -21,12 +21,12 @@ public class Ledger {
     }
 
     //Method to display only the deposits(+)
-    public void displayDeposits(){
+    public void displayDeposits() {
         ArrayList<AccountingLedger> deposits = new ArrayList<>();
 
         //for loop to go through the list and if statement to get the positive value only.
-        for(AccountingLedger transaction: transactions){
-            if (transaction.getAmount() > 0 ){
+        for (AccountingLedger transaction : transactions) {
+            if (transaction.getAmount() > 0) {
                 deposits.add(transaction);
             }
         }
@@ -50,10 +50,10 @@ public class Ledger {
     }
 
     //Method to do all sort and check if the list is empty.
-    private void displayTransactions(ArrayList<AccountingLedger> list){
+    private void displayTransactions(ArrayList<AccountingLedger> list) {
 
         //Checks if the list is empty.
-        if(list.isEmpty()){
+        if (list.isEmpty()) {
             System.out.println("No transactions found");
             return;
         }
@@ -90,14 +90,14 @@ public class Ledger {
     }
 
     //Method to display transactions between two dates.
-    public void displayDateRangeReport(String reportName, LocalDate startDate, LocalDate endDate){
+    public void displayDateRangeReport(String reportName, LocalDate startDate, LocalDate endDate) {
         ArrayList<AccountingLedger> reportTransactions = new ArrayList<>();
 
-        //
+        //for loop to search for date and parse it to date.
         for (AccountingLedger transaction : transactions) {
             LocalDate transactionDate = LocalDate.parse(transaction.getDate());
 
-            if (!transactionDate.isBefore(startDate) && !transactionDate.isAfter(endDate)){
+            if (!transactionDate.isBefore(startDate) && !transactionDate.isAfter(endDate)) {
                 reportTransactions.add(transaction);
             }
 
@@ -107,5 +107,24 @@ public class Ledger {
 
             displayTransactions(reportTransactions);
         }
+    }
+
+    //Method to search by vendor
+    public void searchByVendor(String vendorName) {
+
+        ArrayList<AccountingLedger> matchingTransactions = new ArrayList<>();
+
+        for (AccountingLedger transaction : transactions) {
+            if (transaction.getVendor().toLowerCase()
+                    .contains(vendorName.toLowerCase())) {
+
+                matchingTransactions.add(transaction);
+            }
+        }
+
+        System.out.println("\n========== VENDOR SEARCH ==========");
+        System.out.println("Search: " + vendorName);
+
+        displayTransactions(matchingTransactions);
     }
 }

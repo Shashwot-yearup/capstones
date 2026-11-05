@@ -78,7 +78,7 @@ public class MoneyTrackApp {
             //LocalDate today = localDate.now();
 
             switch (userChoiceReport){
-                case "M" -> ledger.displayDateRangeReport();
+                //case "M" -> ledger.displayDateRangeReport();
                 //case "P" -> ledger.displayDeposits();
                 //case Y" -> ledger.displayPayment();
                 //case "L" -> displayReportMenu(scanner);
