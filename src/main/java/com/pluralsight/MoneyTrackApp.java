@@ -54,8 +54,8 @@ public class MoneyTrackApp {
 
             userChoice = displayScreen.getLedgerChoice(scanner);
             switch (userChoice) {
-                //case "A" -> (scanner);
-                //case "D" -> makePayment(scanner);
+                case "A" -> ledger.displayAllTransactions();
+                //case "D" -> Ledger.
                 //case "P" -> displayLedgerMenu(scanner);
                 //case "R" -> System.out.println("Thank you\n");
                 case "H" -> System.out.println("Returning to Home screen...");
