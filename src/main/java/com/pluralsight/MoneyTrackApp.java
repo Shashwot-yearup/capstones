@@ -70,17 +70,17 @@ public class MoneyTrackApp {
     }
 
     //Method to display the reports menu.
-    public void displayReportMenu(Scanner scanner){
+    public void displayReportMenu(Scanner scanner) {
         String userChoiceReport = "";
 
-        while(!userChoiceReport.equals("B")) {
+        while (!userChoiceReport.equals("B")) {
             displayScreen.displayReports();
 
             userChoiceReport = displayScreen.getReportChoice(scanner);
 
             //LocalDate today = localDate.now();
 
-            switch (userChoiceReport){
+            switch (userChoiceReport) {
                 //case "M" -> ledger.displayDateRangeReport();
                 //case "P" -> ledger.displayDeposits();
                 //case Y" -> ledger.displayPayment();

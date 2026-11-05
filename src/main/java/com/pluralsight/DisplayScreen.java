@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class DisplayScreen {
 
     //Method to display the main screen.
-    public void mainScreen(){
+    public void mainScreen() {
         System.out.println("=================================");
         System.out.println("        MONEYTRACK");
         System.out.println("   Personal Finance Tracker");
@@ -20,7 +20,7 @@ public class DisplayScreen {
     }
 
     //Gets the user choice for the Main screen
-    public String getUserChoice(Scanner scanner){
+    public String getUserChoice(Scanner scanner) {
         return scanner.nextLine().trim().toUpperCase(); //returns user choice.
     }
 
@@ -63,6 +63,4 @@ public class DisplayScreen {
     public String getReportChoice(Scanner scanner) {
         return scanner.nextLine().trim().toUpperCase();
     }
-
-
 }

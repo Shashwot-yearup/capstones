@@ -132,14 +132,14 @@ public class Ledger {
     }
 
     //Method to calculate report total.
-    private void displayReportTotals(ArrayList<AccountingLedger> list){
+    private void displayReportTotals(ArrayList<AccountingLedger> list) {
 
         double deposits = 0;
         double payments = 0;
 
-        for (AccountingLedger transaction: list){
+        for (AccountingLedger transaction : list) {
 
-            if(transaction.getAmount() > 0){
+            if (transaction.getAmount() > 0) {
                 deposits += transaction.getAmount();
             } else {
                 payments += Math.abs(transaction.getAmount()); //Gets the absolute value.
@@ -183,13 +183,14 @@ public class Ledger {
     }
 
     //Method to calculate account total balance.
-    public double calculateBalance(){
+    public double calculateBalance() {
         return calculateDeposits() - calculatePayments();
     }
 
     //Method to display account summary.
-    public void displayAccountSummary(){
+    public void displayAccountSummary() {
         System.out.println("\n===Account Summary===");
+
         System.out.printf("\nTotal Deposits: $%.2f%n", calculateDeposits());
         System.out.printf("Total Payments: $%.2f%n", calculatePayments());
         System.out.printf("Account Balance: $%.2f%n%n", calculateBalance());
