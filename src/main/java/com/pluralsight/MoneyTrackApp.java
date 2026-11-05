@@ -78,11 +78,25 @@ public class MoneyTrackApp {
 
             userChoiceReport = displayScreen.getReportChoice(scanner);
 
-            //LocalDate today = localDate.now();
+            LocalDate today = LocalDate.now();
 
             switch (userChoiceReport) {
-                //case "M" -> ledger.displayDateRangeReport();
-                //case "P" -> ledger.displayDeposits();
+
+                //Month to Date.
+                case "M" -> ledger.displayDateRangeReport("Month to Date,",
+                        today.withDayOfMonth(1),
+                        today);
+
+                //Previous Month.
+                case "P" -> {
+                    LocalDate previousMonth = today.minusMonths(1);
+
+                    ledger.displayDateRangeReport(
+                            "Previous Month",
+                            previousMonth.withDayOfMonth(1),
+                            previousMonth.withDayOfMonth((previousMonth.lengthOfMonth())));
+                }
+
                 //case Y" -> ledger.displayPayment();
                 //case "L" -> displayReportMenu(scanner);
                 //case "V" -> displayReportMenu(scanner);
