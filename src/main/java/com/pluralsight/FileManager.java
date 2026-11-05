@@ -32,7 +32,7 @@ public class FileManager {
                     continue;
                 }
 
-                String[] parts = line.split("\\|", -1);
+                String[] parts = line.split("\\|");
 
                 if (parts.length != 5) {
                     System.out.println("Skipping invalid transaction: " + line);
@@ -68,6 +68,7 @@ public class FileManager {
 
         try {
             Files.createDirectories(filePath.getParent());
+
 
             String line = String.format(
                     Locale.US,

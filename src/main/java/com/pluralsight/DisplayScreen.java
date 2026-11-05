@@ -44,4 +44,23 @@ public class DisplayScreen {
     public String getLedgerChoice(Scanner scanner) {
         return scanner.nextLine().trim().toUpperCase();
     }
+
+    //Method to display the Report screen.
+    public void displayReports() {
+
+        System.out.println("\n========== REPORTS ==========");
+        System.out.println("M) Month To Date");
+        System.out.println("P) Previous Month");
+        System.out.println("Y) Year To Date");
+        System.out.println("L) Previous Year");
+        System.out.println("V) Search By Vendor");
+        System.out.println("H) Return to Ledger");
+
+        System.out.print("Choose an option: ");
+    }
+
+    //Gets the user choice of the Report screen.
+    public String getReportChoice(Scanner scanner) {
+        return scanner.nextLine().trim().toUpperCase();
+    }
 }

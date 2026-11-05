@@ -20,7 +20,7 @@ public class Ledger {
     }
 
     //Method to display only the deposits(+)
-    public  void displayDeposits(){
+    public void displayDeposits(){
         ArrayList<AccountingLedger> deposits = new ArrayList<>();
 
         //for loop to go through the list and if statement to get the positive value only.
@@ -34,7 +34,7 @@ public class Ledger {
     }
 
     //Method to display all the payments(-)
-    public  void displayPayment() {
+    public void displayPayment() {
         ArrayList<AccountingLedger> payment = new ArrayList<>();
 
         //for loop to go through the list and if statement to get the negative value only.

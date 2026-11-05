@@ -57,7 +57,7 @@ public class MoneyTrackApp {
                 case "A" -> ledger.displayAllTransactions();
                 case "D" -> ledger.displayDeposits();
                 case "P" -> ledger.displayPayment();
-                //case "R" -> System.out.println("Thank you\n");
+                case "R" -> System.out.println("Thank you\n");
                 case "H" -> System.out.println("Returning to Home screen...");
                 default -> System.out.println("Invalid option. Please try again");
 
