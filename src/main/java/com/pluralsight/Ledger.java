@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.security.PublicKey;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -179,6 +180,20 @@ public class Ledger {
         }
 
         return total;
+    }
+
+    //Method to calculate account total balance.
+    public double calculateBalance(){
+        return calculateDeposits() - calculatePayments();
+    }
+
+    //Method to display account summary.
+    public void displayAccountSummary(){
+        System.out.printf("Total Deposits: $%.2f%n", calculateDeposits());
+        System.out.printf("Total Payments: $%.2f%n", calculatePayments());
+        System.out.printf("Account Balance: $%.2f%n", calculateBalance());
+
+        System.out.println("=====================================");
     }
 
 }
