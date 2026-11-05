@@ -54,7 +54,7 @@ public class DisplayScreen {
         System.out.println("Y) Year To Date");
         System.out.println("L) Previous Year");
         System.out.println("V) Search By Vendor");
-        System.out.println("H) Return to Ledger");
+        System.out.println("B) Return to Ledger");
 
         System.out.print("Choose an option: ");
     }

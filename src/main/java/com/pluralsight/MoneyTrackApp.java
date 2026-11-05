@@ -1,5 +1,8 @@
 package com.pluralsight;
 
+import com.sun.source.tree.WhileLoopTree;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -24,16 +27,16 @@ public class MoneyTrackApp {
     //Method to keep the program running.
     public void run(Scanner scanner) {
 
-        String choice = "";
+        String userChoice = "";
 
         //While loop to keep running until the user hit x.
-        while (!choice.equals("X")) {
+        while (!userChoice.equals("X")) {
             displayScreen.mainScreen();
 
-            choice = displayScreen.getUserChoice(scanner); //saves the user choice
+            userChoice = displayScreen.getUserChoice(scanner); //saves the user choice
 
             //Switch Statement to get which option did the user choose.
-            switch (choice) {
+            switch (userChoice) {
                 case "D" -> addDeposit(scanner);
                 case "P" -> makePayment(scanner);
                 case "L" -> displayLedgerMenu(scanner);
@@ -45,25 +48,50 @@ public class MoneyTrackApp {
 
     //Method to display the Ledger screen
     public void displayLedgerMenu(Scanner scanner) {
-        String userChoice = "";
+        String userChoiceLedger = "";
 
-        while (!userChoice.equals("H")) {
+        while (!userChoiceLedger.equals("H")) {
             displayScreen.displayLedger();
 
-            userChoice = displayScreen.getLedgerChoice(scanner);
+            userChoiceLedger = displayScreen.getLedgerChoice(scanner);
 
             //Switch statement to get the user choice for the ledger
-            switch (userChoice) {
+            switch (userChoiceLedger) {
                 case "A" -> ledger.displayAllTransactions();
                 case "D" -> ledger.displayDeposits();
                 case "P" -> ledger.displayPayment();
-                case "R" -> System.out.println("Thank you\n");
+                case "R" -> displayReportMenu(scanner);
                 case "H" -> System.out.println("Returning to Home screen...");
                 default -> System.out.println("Invalid option. Please try again");
 
             }
         }
     }
+
+    //Method to display the reports menu.
+    public void displayReportMenu(Scanner scanner){
+        String userChoiceReport = "";
+
+        while(!userChoiceReport.equals("B")) {
+            displayScreen.displayReports();
+
+            userChoiceReport = displayScreen.getReportChoice(scanner);
+
+            //LocalDate today = localDate.now();
+            switch (userChoiceReport){
+                //case "A" -> ledger.displayAllTransactions();
+                //case "D" -> ledger.displayDeposits();
+                //case "P" -> ledger.displayPayment();
+                //case "R" -> displayReportMenu(scanner);
+                case "B" -> System.out.println("Returning to Home screen...");
+                default -> System.out.println("Invalid option. Please try again");
+            }
+
+
+
+        }
+    }
+
 
     //Method to add the deposit.
     public void addDeposit(Scanner scanner) {
