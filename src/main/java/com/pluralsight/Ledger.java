@@ -106,6 +106,7 @@ public class Ledger {
             System.out.println("To:   " + endDate);
 
             displayTransactions(reportTransactions);
+            displayReportTotals(reportTransactions);
         }
     }
 
@@ -126,5 +127,31 @@ public class Ledger {
         System.out.println("Search: " + vendorName);
 
         displayTransactions(matchingTransactions);
+        displayReportTotals(matchingTransactions);
+    }
+
+    //Method to calculate report total.
+    private void displayReportTotals(ArrayList<AccountingLedger> list){
+
+        double deposits = 0;
+        double payments = 0;
+
+        for (AccountingLedger transaction: list){
+
+            if(transaction.getAmount() > 0){
+                deposits += transaction.getAmount();
+            } else {
+                payments += Math.abs(transaction.getAmount()); //Gets the absolute value.
+            }
+
+        }
+
+        System.out.println("\nREPORT TOTALS");
+
+        System.out.printf("Total Deposits: $%.2f%n", deposits);
+        System.out.printf("Total Payments: $%.2f%n", payments);
+        System.out.printf("Net Total:      $%.2f%n", deposits - payments);
+
+        System.out.println("====================================");
     }
 }
