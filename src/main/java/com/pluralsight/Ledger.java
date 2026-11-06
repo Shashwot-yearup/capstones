@@ -1,6 +1,5 @@
 package com.pluralsight;
 
-import java.security.PublicKey;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -101,14 +100,17 @@ public class Ledger {
             if (!transactionDate.isBefore(startDate) && !transactionDate.isAfter(endDate)) {
                 reportTransactions.add(transaction);
             }
-
-            System.out.println("\n========== " + reportName + " ==========");
-            System.out.println("From: " + startDate);
-            System.out.println("To:   " + endDate);
-
-            displayTransactions(reportTransactions);
-            displayReportTotals(reportTransactions);
         }
+
+        //Displays the header.
+        System.out.println("\n========== " + reportName + " ==========");
+        System.out.println("From: " + startDate);
+        System.out.println("To:   " + endDate);
+
+
+        //Displays the total and the matching report.
+        displayTransactions(reportTransactions);
+        displayReportTotals(reportTransactions);
     }
 
     //Method to search by vendor

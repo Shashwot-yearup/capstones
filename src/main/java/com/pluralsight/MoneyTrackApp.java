@@ -109,8 +109,8 @@ public class MoneyTrackApp {
 
                     ledger.displayDateRangeReport(
                             "Previous Year",
-                            previousYear.withDayOfMonth(1),
-                            previousYear.withDayOfMonth((previousYear.lengthOfYear())));
+                            previousYear.withDayOfYear(1),
+                            previousYear.withDayOfYear((previousYear.lengthOfYear())));
                 }
 
                 //Search by vendor name.
