@@ -47,7 +47,7 @@ public class MoneyTrackApp {
         }
     }
 
-    //Method to display the Ledger screen
+    //Method to display the Ledger screen.
     public void displayLedgerMenu(Scanner scanner) {
         String userChoiceLedger = "";
 
@@ -120,6 +120,7 @@ public class MoneyTrackApp {
 
                     String vendorName = scanner.nextLine().trim();
 
+                    //checks if the vendor name is empty or not.
                     if (vendorName.isEmpty()){
                     System.out.println("please enter a vendor name");
                     }else {
@@ -155,7 +156,7 @@ public class MoneyTrackApp {
 
         LocalDateTime now = LocalDateTime.now();
 
-        //format for to save the answers to the csv file.
+        //Creates new transaction.
         AccountingLedger transaction = new AccountingLedger(
                 now.toLocalDate().toString(),
                 now.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
@@ -190,7 +191,7 @@ public class MoneyTrackApp {
 
         LocalDateTime now = LocalDateTime.now();
 
-        //format for to save the answers to the csv file.
+        //Creates new transaction.
         AccountingLedger transaction = new AccountingLedger(
                 now.toLocalDate().toString(),
                 now.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")),

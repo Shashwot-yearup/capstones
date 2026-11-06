@@ -21,19 +21,23 @@ public class FileManager {
         //Catch any errors that happen while accessing or reading the file.
         try {
             if (!Files.exists(filePath)) {
-                Files.createDirectories(filePath.getParent()); //used to safely create all non-existent parent directories for a given file path before you attempt to create or write to the file itself.
+                Files.createDirectories(filePath.getParent()); //Create the file if it's not there
                 Files.createFile(filePath);
                 return transactions;
             }
 
+            //for loop to loop through each line of the file.
             List<String> lines = Files.readAllLines(filePath);
             for (String line : lines) {
+
+                //Checks if the lines is empty or not.
                 if (line.trim().isEmpty()) {
                     continue;
                 }
 
-                String[] parts = line.split("\\|");
+                String[] parts = line.split("\\|");// splits the array by the (|) symbol.
 
+                //sout error message if the length of the string is not 5;
                 if (parts.length != 5) {
                     System.out.println("Skipping invalid transaction: " + line);
                     continue;
@@ -47,8 +51,9 @@ public class FileManager {
                     String vendor = parts[3];
                     double amount = Double.parseDouble(parts[4]);
 
+                    //Creates new transaction object.
                     AccountingLedger transaction = new AccountingLedger(date, time,
-                            description, vendor, amount); //Creates new transaction object
+                            description, vendor, amount);
 
                     transactions.add(transaction);
 
@@ -56,6 +61,7 @@ public class FileManager {
                     System.out.println("Skipping transaction with invalid amount: " + line);
                 }
             }
+
         } catch (IOException e) {
             System.out.println("Error loading transactions: " + e.getMessage());
         }
@@ -66,10 +72,11 @@ public class FileManager {
     //Method to save a new transaction to the csv file.
     public void saveTransaction(AccountingLedger transaction) {
 
+        //Try catch to write it in a proper format in the csv file.
         try {
             Files.createDirectories(filePath.getParent());
 
-
+            //String formatter to sout in a certain way.
             String line = String.format(
                     Locale.US,
                     "%s|%s|%s|%s|%.2f%n", //format for the string.
@@ -82,7 +89,7 @@ public class FileManager {
 
             System.out.println("Saving transaction: " + line);
 
-            //Write to the file.
+            //Writes to the file.
             Files.writeString(
                     filePath,
                     line,
