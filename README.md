@@ -1,43 +1,76 @@
-# Capstones
+# Money Tracking Application
 
-## Overview
+## Project Overview
 
-Welcome to the **Capstones** project! This repository contains a Java-based capstone project developed as part of the Year Up learning experience.
+The **Money Tracking Application** is a Java-based application designed to help users manage and track their financial transactions.
 
-The project is built using Java 17 and Maven, following a structured approach to organizing and managing Java application code.
+The application uses Java 17 and Maven. It includes classes for managing accounting records, displaying information, handling files, and maintaining a ledger. Transaction data is stored in a CSV file.
 
 ## Technologies Used
 
-- **Java 17** – Primary programming language
-- **Apache Maven** – Project management and build automation
-- **Git & GitHub** – Version control and collaboration
-- **IntelliJ IDEA** – Development environment
+- Java 17
+- Apache Maven
+- CSV (Comma-Separated Values)
+- IntelliJ IDEA
+- Git and GitHub
 
 ## Project Structure
 
 ```text
 capstones/
 │
-├── src/
-│   └── main/
-│       └── java/
-│           └── ...
-│
 ├── .idea/
-├── pom.xml
-└── README.md
+├── .mvn/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com.pluralsight/
+│   │   │       ├── AccountingLedger.java
+│   │   │       ├── DisplayScreen.java
+│   │   │       ├── FileManager.java
+│   │   │       ├── Ledger.java
+│   │   │       ├── Main.java
+│   │   │       └── MoneyTrackApp.java
+│   │   │
+│   │   └── resources/
+│   │       └── transactions.csv
+│   │
+│   └── test/
+│
+├── target/
+├── .gitignore
+└── pom.xml
 ```
+
+## Class Descriptions
+
+| Class | Purpose |
+|---|---|
+| `Main.java` | Entry point of the application. |
+| `MoneyTrackApp.java` | Main application functionality. |
+| `AccountingLedger.java` | Handles accounting-related operations. |
+| `DisplayScreen.java` | Displays information to the user. |
+| `FileManager.java` | Manages file operations and transaction data. |
+| `Ledger.java` | Manages the transaction ledger. |
+
+## Data Storage
+
+The application uses a CSV file named `transactions.csv`, located in:
+
+`src/main/resources/transactions.csv`
+
+This file stores transaction records and provides a way to organize financial data.
 
 ## Getting Started
 
 ### Prerequisites
 
-Make sure you have the following installed:
+Before running the application, make sure you have:
 
-- Java Development Kit (JDK) 17 or later
+- Java JDK 17 or later
+- IntelliJ IDEA or another Java IDE
 - Apache Maven
-- Git
-- An IDE such as IntelliJ IDEA
 
 ### Installation
 
@@ -47,43 +80,33 @@ Make sure you have the following installed:
    git clone https://github.com/Shashwot-yearup/capstones.git
    ```
 
-2. Navigate to the project directory:
+2. Open the project in IntelliJ IDEA.
 
-   ```bash
-   cd capstones
-   ```
+3. Allow Maven to load and download the required dependencies.
 
-3. Build the project using Maven:
+4. Navigate to `Main.java`.
 
-   ```bash
-   mvn clean install
-   ```
+5. Run the application.
 
-4. Open the project in your preferred Java IDE.
+## Building the Project
 
-## Running the Project
+To build the project using Maven, run:
 
-Open the project in IntelliJ IDEA and locate the main Java class containing the `main()` method.
-
-Run the main class to start the application.
+```bash
+mvn clean install
+```
 
 ## Learning Objectives
 
-This project provides an opportunity to:
+This project demonstrates the use of:
 
-- Apply Java programming concepts.
-- Practice object-oriented programming.
-- Develop problem-solving skills.
-- Work with Maven project structures.
-- Use Git and GitHub for version control.
-- Build and organize software projects.
-
-## Future Improvements
-
-- Expand application functionality.
-- Improve code organization and maintainability.
-- Add appropriate testing.
-- Improve documentation as the project develops.
+- Object-Oriented Programming (OOP)
+- Java classes and methods
+- File handling
+- CSV data management
+- Maven project management
+- Application organization
+- Version control with Git and GitHub
 
 ## Author
 
@@ -93,8 +116,8 @@ Year Up Capstone Project
 
 ## Repository
 
-[GitHub – Capstones](https://github.com/Shashwot-yearup/capstones)
+[GitHub Repository](https://github.com/Shashwot-yearup/capstones)
 
 ## License
 
-This project is intended for educational purposes.
+This project was created for educational purposes.
